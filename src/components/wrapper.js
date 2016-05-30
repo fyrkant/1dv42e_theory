@@ -4,10 +4,14 @@ import {Link} from "react-router";
 const Wrapper = ({children}) => (
   <div>
     <h1>LABORATION</h1>
-    <div>
-      <Link to="list" >List</Link>
-      <Link to="list2">List 2</Link>
-    </div>
+    <ul>
+      <li>
+        <Link to="list" >Not memoized</Link>
+      </li>
+      <li>
+        <Link to="list2">Memoized</Link>
+      </li>
+    </ul>
     <div>{children}</div>
   </div>);
 Wrapper.propTypes = {
