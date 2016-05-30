@@ -2,7 +2,6 @@ import React, {PropTypes} from "react";
 import map from "lodash/map";
 
 const UserList = ({users}) => {
-  console.log(users.length);
   return (
     <ul>
       {

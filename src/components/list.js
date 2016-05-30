@@ -1,11 +1,14 @@
-import React, {Component} from "react";
+import React, {Component, PropTypes} from "react";
 import orderBy from "lodash/orderBy";
-import data from "../data";
+import memoize from "lru-memoize";
 
+import data from "../data";
 import UserList from "./user-list";
 import Pagination from "./pagination";
 
-class NormalList extends Component {
+const memoized = memoize(1000)(orderBy);
+
+class List extends Component {
   constructor() {
     super();
 
@@ -30,14 +33,14 @@ class NormalList extends Component {
     const {users, key, direction, offset, perPage} = this.state;
 
     const start = performance.now();
-    const orderedUsers = orderBy(users, key, direction);
+    const orderedUsers = this.props.memo ? memoized(users, key, direction) : orderBy(users, key, direction);
     const end = performance.now() - start;
 
     const slicedData = orderedUsers.slice(offset, offset + perPage);
 
     return (
       <div>
-        <h2>Not memoized</h2>
+        <h2>{this.props.title}</h2>
         <button onClick={() => this.setState({key: "name"})} disabled={this.state.key === "name"}>name</button>
         <button onClick={() => this.setState({key: "address"})} disabled={this.state.key === "address"}>address</button><br/>
         <button onClick={() => this.setState({direction: "asc"})} disabled={this.state.direction === "asc"}>ASC</button>
@@ -54,5 +57,9 @@ class NormalList extends Component {
     );
   }
 }
+List.propTypes = {
+  memo: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired
+};
 
-export default NormalList;
+export default List;

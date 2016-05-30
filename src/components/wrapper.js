@@ -6,10 +6,10 @@ const Wrapper = ({children}) => (
     <h1>LABORATION</h1>
     <ul>
       <li>
-        <Link to="list" >Not memoized</Link>
+        <Link to="plain" >Plain</Link>
       </li>
       <li>
-        <Link to="list2">Memoized</Link>
+        <Link to="memoized">Memoized</Link>
       </li>
     </ul>
     <div>{children}</div>
