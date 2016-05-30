@@ -3,6 +3,7 @@ import orderBy from "lodash/orderBy";
 import data from "../data";
 
 import UserList from "./user-list";
+import Pagination from "./pagination";
 
 class NormalList extends Component {
   constructor() {
@@ -11,7 +12,9 @@ class NormalList extends Component {
     this.state = {
       users: null,
       key: "name",
-      direction: "asc"
+      direction: "asc",
+      offset: 0,
+      perPage: 20
     };
   }
 
@@ -19,12 +22,18 @@ class NormalList extends Component {
     this.setState({users: JSON.parse(data)});
   }
 
+  changePage(change) {
+    this.setState({offset: this.state.offset + change});
+  }
+
   render() {
-    const {users, key, direction} = this.state;
+    const {users, key, direction, offset, perPage} = this.state;
 
     const start = performance.now();
     const orderedUsers = orderBy(users, key, direction);
     const end = performance.now() - start;
+
+    const slicedData = orderedUsers.slice(offset, offset + perPage);
 
     return (
       <div>
@@ -34,7 +43,13 @@ class NormalList extends Component {
         <button onClick={() => this.setState({direction: "asc"})} disabled={this.state.direction === "asc"}>ASC</button>
         <button onClick={() => this.setState({direction: "desc"})} disabled={this.state.direction === "desc"}>DESC</button>
         <h3>TIMER: {end} milliseconds</h3>
-        <UserList users={orderedUsers} />
+        <UserList users={slicedData} />
+        <Pagination
+          max={orderedUsers.length}
+          offset={offset}
+          perPage={perPage}
+          changePage={this.changePage.bind(this)}
+        />
       </div>
     );
   }

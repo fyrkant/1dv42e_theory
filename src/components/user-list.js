@@ -1,8 +1,8 @@
 import React, {PropTypes} from "react";
 import map from "lodash/map";
-import memoize from "lodash/memoize";
 
 const UserList = ({users}) => {
+  console.log(users.length);
   return (
     <ul>
       {
