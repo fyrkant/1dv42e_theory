@@ -5,7 +5,7 @@ const fs = require("fs");
 
 let data = [];
 
-_.times(10000,
+_.times(1000,
   () => data.push({
     name: faker.name.findName(),
     email: faker.internet.email(),
