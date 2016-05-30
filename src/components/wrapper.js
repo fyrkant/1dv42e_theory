@@ -1,7 +1,7 @@
-import React from "react";
+import React, {PropTypes} from "react";
 import {Link} from "react-router";
 
-export default ({children}) => (
+const Wrapper = ({children}) => (
   <div>
     <h1>LABORATION</h1>
     <div>
@@ -10,3 +10,8 @@ export default ({children}) => (
     </div>
     <div>{children}</div>
   </div>);
+Wrapper.propTypes = {
+  children: PropTypes.node
+};
+
+export default Wrapper;

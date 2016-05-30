@@ -1,0 +1,50 @@
+{
+    "plugins": [
+        "react"
+    ],
+    "extends": ["google","plugin:react/recommended"],
+    "parser": "babel-eslint",
+    "rules": {
+        "indent": [
+            2,
+            2
+        ],
+        "quotes": [
+            2,
+            "double"
+        ],
+        "linebreak-style": [
+            2,
+            "unix"
+        ],
+        "semi": [
+            2,
+            "always"
+        ],
+        "brace-style": 0,
+        "no-var": 2,
+        "prefer-const": 2,
+        "prefer-arrow-callback": 2,
+        "dot-location": [2, "property"],
+        "max-len": 0,
+        "no-extra-parens": 0,
+        "comma-dangle": 1,
+        "operator-linebreak": 0,
+        "space-unary-ops": 1,
+        "no-unused-vars": [2, {"args": "none"}],
+        "no-unused-expressions": [2, { "allowTernary": true }],
+        "react/display-name": 0
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "commonjs": true,
+        "mocha": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React from "react";
 
-export default props => {
-  return <p>Welcome!</p>
+export default () => {
+  return <p>Welcome!</p>;
 };
