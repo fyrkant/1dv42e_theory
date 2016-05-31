@@ -4,8 +4,10 @@ import {IndexRoute, Router, Route, hashHistory} from "react-router";
 
 import Wrapper from "./components/wrapper";
 import Welcome from "./components/welcome";
-import Plain from "./components/plain";
-import Memoized from "./components/memoized";
+import PlainOrdering from "./components/plain";
+import MemoizedOrdering from "./components/memoized";
+import PlainSearch from "./components/plain-search";
+import MemoizedSearch from "./components/memoized-search";
 
 render(
   <Router
@@ -13,8 +15,10 @@ render(
   >
     <Route path="/" component={Wrapper}>
       <IndexRoute component={Welcome} />
-      <Route path="plain" component={Plain} />
-      <Route path="memoized" component={Memoized} />
+      <Route path="plain-ordering" component={PlainOrdering} />
+      <Route path="memoized-ordering" component={MemoizedOrdering} />
+      <Route path="plain-search" component={PlainSearch} />
+      <Route path="memoized-search" component={MemoizedSearch} />
     </Route>
   </Router>,
   document.getElementById("root")

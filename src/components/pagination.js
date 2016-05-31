@@ -1,7 +1,8 @@
 import React, {PropTypes} from "react";
 
 const Pagination = ({max, perPage, offset, changePage}) => {
-  const maxPage = max / perPage;
+  let maxPage = max / perPage;
+  maxPage = maxPage > 1 ? maxPage : 1;
   const currentPage = offset / perPage + 1;
 
   return (

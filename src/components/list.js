@@ -41,8 +41,10 @@ class List extends Component {
     return (
       <div>
         <h2>{this.props.title}</h2>
+        <p>Order by:</p>
         <button onClick={() => this.setState({key: "name"})} disabled={this.state.key === "name"}>name</button>
-        <button onClick={() => this.setState({key: "address"})} disabled={this.state.key === "address"}>address</button><br/>
+        <button onClick={() => this.setState({key: "email"})} disabled={this.state.key === "email"}>email</button><br/>
+        <p>Direction:</p>
         <button onClick={() => this.setState({direction: "asc"})} disabled={this.state.direction === "asc"}>ASC</button>
         <button onClick={() => this.setState({direction: "desc"})} disabled={this.state.direction === "desc"}>DESC</button>
         <h3>TIMER: {end} milliseconds</h3>

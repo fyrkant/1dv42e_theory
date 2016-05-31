@@ -8,7 +8,7 @@ const UserList = ({users}) => {
         map(users, (user, index) => (
           <li key={`${user.name}_${index}`}>
             <strong>Name: </strong>{user.name} <br />
-            <strong>Address: </strong>{user.address}
+            <strong>Email: </strong>{user.email}
           </li>
           ))
       }
