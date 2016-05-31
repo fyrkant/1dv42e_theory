@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from "react";
-import debounce from "lodash/debounce";
 import memoize from "lru-memoize";
 
 import {filterObjects} from "../utils/filter";

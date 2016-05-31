@@ -20,7 +20,6 @@ class Wrapper extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="main-wrapper">
         <AppBar
@@ -30,7 +29,7 @@ class Wrapper extends Component {
         <Drawer
           open={this.state.open}
           docked={false}
-          onRequestChange={(open) => this.setState({open})}
+          onRequestChange={open => this.setState({open})}
         >
               <h4 className="drawer-header">List ordering:</h4>
               <Link to="plain-ordering" ><MenuItem>Plain</MenuItem></Link>

@@ -1,3 +1,4 @@
+/* eslint max-statements-per-line: 0 */
 // Helper functions for filtering objects
 
 import flatten from "lodash/flatten";

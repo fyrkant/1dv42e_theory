@@ -2,7 +2,7 @@ import React from "react";
 import {render} from "react-dom";
 import {IndexRoute, Router, Route, hashHistory} from "react-router";
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from "react-tap-event-plugin";
 
 // Needed for onTouchTap
 // Check this repo:
