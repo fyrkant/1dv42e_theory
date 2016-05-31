@@ -22,7 +22,8 @@ class List extends Component {
       users: null,
       searchTerm: null,
       offset: 0,
-      perPage: 20
+      perPage: 20,
+      error: null
     };
   }
 
@@ -36,17 +37,23 @@ class List extends Component {
 
   search() {
     const searchTerm = this.refs.searchBox.input.value;
-    this.setState({searchTerm: searchTerm});
+
+    if (searchTerm) {
+      this.setState({searchTerm: searchTerm});
+    } else {
+      this.setState({error: "Enter search term"});
+    }
   }
 
-  emptySearch(e) {
-    e.preventDefault();
-    this.setState({searchTerm: null});
-    this.refs.searchBox.input.value = "";
+  emptySearch() {
+    if (this.state.searchTerm || this.state.error) {
+      this.setState({searchTerm: null, error: null});
+      this.refs.searchBox.input.value = null;
+    }
   }
 
   render() {
-    const {users, offset, perPage, searchTerm} = this.state;
+    const {users, offset, perPage, searchTerm, error} = this.state;
     const {memo, title} = this.props;
 
     const filterFunc = memo ? memoized : filterObjects;
@@ -62,7 +69,13 @@ class List extends Component {
         <h2>{title}</h2>
         <h3>TIMER: {end} milliseconds</h3>
         <div style={{alignSelf: "center"}}>
-          <TextField floatingLabelText="Search users" ref="searchBox" />
+          <TextField
+            name="searchInput"
+            floatingLabelText="Search users"
+            ref="searchBox"
+            errorText={error}
+            errorStyle={{position: "absolute", top: 65}}
+          />
           <RaisedButton
             label="Search"
             primary

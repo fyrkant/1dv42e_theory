@@ -10,7 +10,7 @@ const Pagination = ({max, perPage, offset, changePage}) => {
   const currentPage = offset / perPage + 1;
 
   return (
-    <div style={{alignSelf: "center", alignItems: "baseline"}}>
+    <div style={{alignSelf: "center", display: "flex", alignItems: "center"}}>
       <IconButton
         onClick={changePage.bind(this, perPage * -1)}
         disabled={currentPage === 1}
