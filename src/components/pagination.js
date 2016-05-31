@@ -1,21 +1,25 @@
 import React, {PropTypes} from "react";
 
+import IconButton from "material-ui/IconButton";
+import Left from "material-ui/svg-icons/navigation/chevron-left";
+import Right from "material-ui/svg-icons/navigation/chevron-right";
+
 const Pagination = ({max, perPage, offset, changePage}) => {
   let maxPage = max / perPage;
   maxPage = maxPage > 1 ? maxPage : 1;
   const currentPage = offset / perPage + 1;
 
   return (
-    <div>
-      <button
+    <div style={{alignSelf: "center", alignItems: "baseline"}}>
+      <IconButton
         onClick={changePage.bind(this, perPage * -1)}
         disabled={currentPage === 1}
-      >{"<"}</button>
-        {currentPage} / {maxPage}
-      <button
+      ><Left /></IconButton>
+        <span>{currentPage} / {maxPage}</span>
+      <IconButton
         onClick={changePage.bind(this, perPage)}
         disabled={currentPage === maxPage}
-      >{">"}</button>
+      ><Right /></IconButton>
     </div>
   );
 };

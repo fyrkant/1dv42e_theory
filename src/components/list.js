@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from "react";
 import orderBy from "lodash/orderBy";
 import memoize from "lru-memoize";
 
+import RaisedButton from "material-ui/RaisedButton";
+
 import data from "../data";
 import UserList from "./user-list";
 import Pagination from "./pagination";
@@ -39,14 +41,34 @@ class List extends Component {
     const slicedData = orderedUsers.slice(offset, offset + perPage);
 
     return (
-      <div>
+      <div className="content-page">
         <h2>{this.props.title}</h2>
-        <p>Order by:</p>
-        <button onClick={() => this.setState({key: "name"})} disabled={this.state.key === "name"}>name</button>
-        <button onClick={() => this.setState({key: "email"})} disabled={this.state.key === "email"}>email</button><br/>
-        <p>Direction:</p>
-        <button onClick={() => this.setState({direction: "asc"})} disabled={this.state.direction === "asc"}>ASC</button>
-        <button onClick={() => this.setState({direction: "desc"})} disabled={this.state.direction === "desc"}>DESC</button>
+        <div>
+          <p>Order by:</p>
+          <RaisedButton
+            onClick={() => this.setState({key: "name"})}
+            disabled={this.state.key === "name"}
+            primary
+            label="name" />
+          <RaisedButton
+            onClick={() => this.setState({key: "email"})}
+            disabled={this.state.key === "email"}
+            primary
+            label="email" />
+          <p>Direction:</p>
+          <RaisedButton
+            onClick={() => this.setState({direction: "asc"})}
+            disabled={this.state.direction === "asc"}
+            primary
+            label="ASC"
+          />
+          <RaisedButton
+            onClick={() => this.setState({direction: "desc"})}
+            disabled={this.state.direction === "desc"}
+            primary
+            label="DESC"
+          />
+        </div>
         <h3>TIMER: {end} milliseconds</h3>
         <UserList users={slicedData} />
         <Pagination

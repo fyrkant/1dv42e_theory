@@ -1,19 +1,50 @@
-import React, {PropTypes} from "react";
+import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
 
-const Wrapper = ({children}) => (
-  <div>
-    <h1>LABORATION</h1>
-    <ul>
-      <li>
-        List ordering: <Link to="plain-ordering" >Plain</Link> - <Link to="memoized-ordering">Memoized</Link>
-      </li>
-      <li>
-        List search: <Link to="plain-search" >Plain</Link> - <Link to="memoized-search">Memoized</Link>
-      </li>
-    </ul>
-    <div>{children}</div>
-  </div>);
+import AppBar from "material-ui/AppBar";
+import Drawer from "material-ui/Drawer";
+import MenuItem from "material-ui/MenuItem";
+
+class Wrapper extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false
+    };
+  }
+
+  handleToggle() {
+    this.setState({open: !this.state.open});
+  }
+
+  render() {
+    console.log(this.state)
+    return (
+      <div className="main-wrapper">
+        <AppBar
+          title="Memoization Demo"
+          onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
+        />
+        <Drawer
+          open={this.state.open}
+          docked={false}
+          onRequestChange={(open) => this.setState({open})}
+        >
+              <h4 className="drawer-header">List ordering:</h4>
+              <Link to="plain-ordering" ><MenuItem>Plain</MenuItem></Link>
+              <Link to="memoized-ordering"><MenuItem>Memoized</MenuItem></Link>
+              <h4 className="drawer-header">List search:</h4>
+              <Link to="plain-search" ><MenuItem>Plain</MenuItem></Link>
+              <Link to="memoized-search"><MenuItem>Memoized</MenuItem></Link>
+        </Drawer>
+
+        <div className="content-wrapper">{this.props.children}</div>
+      </div>
+    );
+  }
+}
 Wrapper.propTypes = {
   children: PropTypes.node
 };
