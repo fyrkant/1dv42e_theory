@@ -14,12 +14,16 @@ const Pagination = ({max, perPage, offset, changePage}) => {
       <IconButton
         onClick={changePage.bind(this, perPage * -1)}
         disabled={currentPage === 1}
-      ><Left /></IconButton>
-        <span>{currentPage} / {maxPage}</span>
+      >
+        <Left />
+      </IconButton>
+      <span>{currentPage} / {maxPage}</span>
       <IconButton
         onClick={changePage.bind(this, perPage)}
         disabled={currentPage === maxPage}
-      ><Right /></IconButton>
+      >
+        <Right />
+      </IconButton>
     </div>
   );
 };
