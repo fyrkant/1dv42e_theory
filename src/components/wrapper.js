@@ -4,6 +4,7 @@ import {Link} from "react-router";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
+import RaisedButton from "material-ui/RaisedButton";
 
 class Wrapper extends Component {
 
@@ -25,7 +26,21 @@ class Wrapper extends Component {
         <AppBar
           title="Memoization Demo"
           onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
-        />
+        >
+          <RaisedButton
+            href="https://github.com/mw222rs/1dv42e_theory"
+            className="appbar-link"
+            label="Code for this on GitHub"
+            linkButton
+          />
+          <RaisedButton
+            href="http://mattias.rocks"
+            className="appbar-link"
+            label="My blog"
+            linkButton
+          />
+
+        </AppBar>
         <Drawer
           open={this.state.open}
           docked={false}
