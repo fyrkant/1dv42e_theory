@@ -3,7 +3,7 @@ const faker = require("faker");
 const _ = require("lodash");
 const fs = require("fs");
 
-let data = [];
+const data = [];
 
 _.times(10000,
   () => data.push({
